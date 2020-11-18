@@ -53,13 +53,18 @@ width_non_urgent_important = []
 width_urgent_non_important = []
 width_non_urgent_non_important = []
 
-def correct_width(list, new_list):
-    max_string_len = 30
+def correct_width(list, new_list): 
     for string in list:
-        if len(string) > max_string_len:
-            max_string_len = len(string)
+        if len(string) > 60:
+            print("Error. You have used too many characters. Please use 60 or less.")
+        elif len(string) > 30:
+            i = string.rindex(" ", 0, 30)
+            string = string[:i] + '\n' + string[i:]
+            while len(string) <= 60:
+                string += " "
+            new_list.append(string)
         else:
-            while len(string) < max_string_len:
+            while len(string) <= 30:
                 string += " "
             new_list.append(string)
 
