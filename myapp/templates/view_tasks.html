@@ -1,16 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
+
 <h1>EDIT TASK PAGE</h1>
 <h2>List of tasks</h2>
-<ol>
-    {% for id, task in template_task_name.items() %}
-    <li>{{ task }}</li>
-    {% endfor %}
-</ol>
-<ol>
-    {% for id,task in template_task_type.items() %}
-    <li>{{ task }}</li>
-    {% endfor %}
-</ol>
+<table>
+    <!-- <tr>
+        <th>Task</th>
+        <th>Urgency/Importance</th>
+    </tr> -->
+    <tr>
+        <td>TASK</td>
+        {% for name in template_task_name.values() %}
+        <td>{{ name }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        <td>URGENCY/IMPORTANCE</td>
+        {% for t_type in template_task_type.values() %}
+        <td>{{ t_type }}</td>
+        {% endfor %}
+    </tr>
+</table>
 
 {% endblock %}
