@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Product Page Template</title>
+    <title>Eisenhower's Quadrants</title>
     <!-- Bootstrap -->
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/bootstrap-4.4.1.css') }}">
   </head>
@@ -43,11 +43,19 @@
     </nav>
     {% block content %}
     {% endblock %}
-  </footer>
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="{{url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
-  <script src="{{url_for('static', filename='js/bootstrap-4.4.1.js')}}"></script>
+    <footer class="text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © Depechcodes.co.uk. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap-4.4.1.js')}}"></script>
   </body>
 </html>

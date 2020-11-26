@@ -3,9 +3,12 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, RadioField
 from wtforms.validators import DataRequired
 from csv_read_write import task_name, task_type
+import csv
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'entersecretkey'
+if __name__ == "__main__":
+    app.debug=True
 
 class AddTask(FlaskForm):
     task_name = StringField("Task Name:", validators=[DataRequired()])
@@ -23,6 +26,13 @@ def add_task():
         new_id = len(task_name) + 1
         task_name[new_id] = add_task_form.task_name.data
         task_type[new_id] = add_task_form.task_type.data
+
+        with open('Eisenhower_test.csv') as csv_file_write:
+            fields=['Task ID', 'Task', 'Urgent/Important']
+            csv_writer = csv.DictWriter(csv_file_write, fieldnames=fields)
+            print(new_id)
+            csv_writer.writerow({'Task ID': new_id, 'Task': task_name[new_id], 'Urgent/Important': task_type[new_id]})
+
         return redirect(url_for('edit_task', _external=True, _scheme='http'))
     return render_template('add_task.html', template_form=add_task_form)
 
