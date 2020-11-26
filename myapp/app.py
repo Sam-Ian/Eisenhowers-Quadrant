@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, RadioField
 from wtforms.validators import DataRequired
-from python_db import task_name, task_type
+from csv_read_write import task_name, task_type
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'entersecretkey'
