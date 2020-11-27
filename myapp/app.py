@@ -1,20 +1,9 @@
+from forms import AddTask, CompleteTask
 from flask import Flask, render_template, request, redirect, url_for
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, RadioField
-from wtforms.validators import DataRequired
 import csv
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'entersecretkey'
-if __name__ == "__main__":
-    app.debug=True
-
-class AddTask(FlaskForm):
-    task_name = StringField("Task Name:", validators=[DataRequired()])
-    task_type = RadioField("Task Type:", choices=[("Urgent Important", "Urgent/Important"), ("Urgent Non Important", "Urgent/Non Important"), ("Non Urgent Important", "Non Urgent/Important"), ("Non Urgent/Non Important", "Non Urgent/Non Important")], validators=[DataRequired()])
-    submit_task = SubmitField("Add Task")
-
-
 
 @app.route('/', methods=["GET", "POST"])
 def index():
@@ -25,7 +14,7 @@ def index():
         csv_dict_reader = csv.DictReader(csv_file_dict_read)
         for task in csv_dict_reader:
             full_dict_data.append(task)
-
+            
         unknown_type = []
         urgent_important_tasks = []
         non_urgent_important_tasks = []
@@ -33,18 +22,33 @@ def index():
         non_urgent_non_important_tasks = []
 
     for task in full_dict_data:
-        if task['Urgent/Important'] == 'Urgent Important':
+        if task['Urgent/Important'] == 'Urgent Important' and task['Task Complete'] == 'N':
             urgent_important_tasks.append(task['Task'])
-        elif task['Urgent/Important'] == 'Non Urgent Important':
+        elif task['Urgent/Important'] == 'Non Urgent Important' and task['Task Complete'] == 'N':
             non_urgent_important_tasks.append(task['Task'])
-        elif task['Urgent/Important'] == 'Urgent Non Important':
+        elif task['Urgent/Important'] == 'Urgent Non Important' and task['Task Complete'] == 'N':
             urgent_non_important_tasks.append(task['Task'])
-        elif task['Urgent/Important'] == 'Non Urgent Non Important':
+        elif task['Urgent/Important'] == 'Non Urgent Non Important' and task['Task Complete'] == 'N':
             non_urgent_non_important_tasks.append(task['Task'])
         else:
             unknown_type.append(task)
 
-    return render_template('index.html', urgent_important_tasks=urgent_important_tasks, non_urgent_important_tasks=non_urgent_important_tasks, urgent_non_important_tasks=urgent_non_important_tasks, non_urgent_non_important_tasks=non_urgent_non_important_tasks, unknown_type=unknown_type)
+    complete_task_form = CompleteTask()
+    if complete_task_form.validate_on_submit():
+    
+        completed_task = complete_task_form.task_completed_name.data
+
+        for row in full_dict_data:
+            if row['Task'] == completed_task:
+                row['Task Complete'] = 'Y'     
+
+        with open('Eisenhower.csv', 'w', newline='', encoding='utf-8') as csv_file_write:
+            csv_writer = csv.DictWriter(csv_file_write, fieldnames=('Task ID', 'Task', 'Urgent/Important', 'Task Complete'))
+            csv_writer.writeheader()
+            csv_writer.writerows(full_dict_data)
+
+        return redirect(url_for('index', _external=True, _scheme='http'))
+    return render_template('index.html', urgent_important_tasks=urgent_important_tasks, non_urgent_important_tasks=non_urgent_important_tasks, urgent_non_important_tasks=urgent_non_important_tasks, non_urgent_non_important_tasks=non_urgent_non_important_tasks, unknown_type=unknown_type, complete_task_form=complete_task_form)
 
 
 
@@ -66,10 +70,11 @@ def add_task():
         task_name[new_id] = add_task_form.task_name.data
         task_type[new_id] = add_task_form.task_type.data
 
+
         with open('Eisenhower.csv', 'a', newline='', encoding='utf-8') as csv_file_write:
-            fields=['Task ID', 'Task', 'Urgent/Important']
+            fields=['Task ID', 'Task', 'Urgent/Important', 'Task Complete']
             csv_writer = csv.DictWriter(csv_file_write, fieldnames=fields)
-            csv_writer.writerow({'Task ID': new_id, 'Task': task_name[new_id], 'Urgent/Important': task_type[new_id]})
+            csv_writer.writerow({'Task ID': new_id, 'Task': task_name[new_id], 'Urgent/Important': task_type[new_id], 'Task Complete': 'N'})
 
         return redirect(url_for('index', _external=True, _scheme='http'))
     return render_template('add_task.html', template_form=add_task_form)
@@ -82,6 +87,7 @@ def view_tasks():
     task_id_list = []
     task_name_list = []
     task_type_list = []
+    task_complete_list = []
             
     with open('Eisenhower.csv', newline='') as csv_file_read:
         csv_reader = csv.reader(csv_file_read)
@@ -92,9 +98,10 @@ def view_tasks():
                 task_id_list.append(task[0])
                 task_name_list.append(task[1])
                 task_type_list.append(task[2])
+                task_complete_list.append(task[3])
 
     task_length = len(task_id_list)
-    return render_template('view_tasks.html', task_name_list=task_name_list, task_type_list=task_type_list, task_length=task_length)
+    return render_template('view_tasks.html', task_name_list=task_name_list, task_type_list=task_type_list, task_complete_list=task_complete_list, task_length=task_length)
 
 
 

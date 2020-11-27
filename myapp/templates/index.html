@@ -31,7 +31,6 @@
       </div>
 	</div>
 	<table>
-		<caption>Eisenhower's Quadrant</caption>
 		<tr>
 			<td></td>
 			<th>URGENT</th>
@@ -65,8 +64,13 @@
 			</td>
 		</tr>
 	</table>
-
-
+	<h3>Complete a Task</h3>
+	<form method="POST">
+		{{ complete_task_form.hidden_tag() }}
+		{{ complete_task_form.task_completed_name.label }}
+		{{ complete_task_form.task_completed_name }}
+		{{ complete_task_form.submit_completed_task() }}
+		</form>
 
 
 
