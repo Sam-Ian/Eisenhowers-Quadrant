@@ -4,7 +4,6 @@ from wtforms import StringField, SubmitField, RadioField, SelectField
 from wtforms.validators import DataRequired
 import csv
 
-
 uncompleted_tasks = []
 
 with open('Eisenhower.csv', newline='') as csv_file_dict_read:
