@@ -19,7 +19,15 @@
         </tr>
         {% endfor %}
 </table>
-
+<br>
+<h4>Delete a Task</h4>
+<p>You can delete a task here if you no longer want to do it. Please select a task from the dropdown menu to delete.</p>
+<br>
+<form method="POST">
+{{ delete_task_form.hidden_tag() }}
+{{ delete_task_form.task_delete_name }}
+{{ delete_task_form.submit_deleted_task() }}
+</form>
 {% endblock %}
 
 

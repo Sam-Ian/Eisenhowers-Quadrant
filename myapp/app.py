@@ -1,10 +1,12 @@
-from forms import AddTask, CompleteTask
+from forms import AddTask, CompleteTask, DeleteTask
 from flask import Flask, render_template, request, redirect, url_for
 import csv
 from datetime import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'entersecretkey'
+
+
 
 @app.route('/', methods=["GET", "POST"])
 def index():
@@ -82,7 +84,7 @@ def add_task():
 
 
 
-@app.route('/view-tasks')
+@app.route('/view-tasks', methods=["GET", "POST"])
 def view_tasks():
 
     task_id_list = []
@@ -105,7 +107,28 @@ def view_tasks():
 
     task_length = len(task_id_list)
 
-    return render_template('view_tasks.html', task_name_list=task_name_list, task_type_list=task_type_list, task_complete_list=task_complete_list, task_added_list=task_added_list, task_length=task_length)
+    full_dict_data = []
+
+    with open('Eisenhower.csv', newline='') as csv_file_dict_read:
+        csv_dict_reader = csv.DictReader(csv_file_dict_read)
+        for task in csv_dict_reader:
+            full_dict_data.append(task)
+
+    delete_task_form = DeleteTask()
+    if delete_task_form.validate_on_submit():
+        deleted_task = delete_task_form.task_delete_name.data
+
+        for i in range(len(full_dict_data)):
+            if full_dict_data[i]['Task'] == deleted_task:
+                del full_dict_data[i]
+                break
+
+        with open('Eisenhower.csv', 'w', newline='', encoding='utf-8') as csv_file_write:
+            csv_writer = csv.DictWriter(csv_file_write, fieldnames=('Task ID', 'Task', 'Urgent/Important', 'Task Complete', 'Date Added', 'Date Completed'))
+            csv_writer.writeheader()
+            csv_writer.writerows(full_dict_data)
+        return redirect(url_for('view_tasks', _external=True, _scheme='http')) 
+    return render_template('view_tasks.html', task_name_list=task_name_list, task_type_list=task_type_list, task_complete_list=task_complete_list, task_added_list=task_added_list, task_length=task_length, delete_task_form=delete_task_form)
 
 
 

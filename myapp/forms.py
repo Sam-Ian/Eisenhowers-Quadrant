@@ -20,3 +20,7 @@ class AddTask(FlaskForm):
 class CompleteTask(FlaskForm):
     task_completed_name = SelectField("Select Completed Task", validators=[DataRequired()], choices=uncompleted_tasks)
     submit_completed_task = SubmitField("Submit")
+
+class DeleteTask(FlaskForm):
+    task_delete_name = SelectField(validators=[DataRequired()], choices=uncompleted_tasks)
+    submit_deleted_task = SubmitField("Delete Task")
