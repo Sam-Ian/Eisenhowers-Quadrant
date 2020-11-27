@@ -2,20 +2,12 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, RadioField
 from wtforms.validators import DataRequired
-from flask_sqlalchemy import SQLAlchemy
 import csv
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'entersecretkey'
 if __name__ == "__main__":
     app.debug=True
-
-app.config['ENV'] = 'development'
-app.config['DEBUG'] = True
-app.config['TESTING'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///eisenhowers_quadrant.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# db = SQLAlchemy(myapp)
 
 class AddTask(FlaskForm):
     task_name = StringField("Task Name:", validators=[DataRequired()])
