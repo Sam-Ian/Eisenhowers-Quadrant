@@ -29,8 +29,63 @@
           </div>
         </div>
       </div>
-    </div>
-    <hr>
+	</div>
+	
+	<table>
+		<caption>Eisenhower's Quadrant</caption>
+		<tr>
+			<td></td>
+			<th>URGENT</th>
+			<th>NON URGENT</th>
+		</tr>
+		<tr>
+			<th>IMPORTANT</th>
+			<td>
+				{% for task in urgent_important_tasks %}
+				{{ task }}<br>			
+				{% endfor %}
+			</td>			
+			<td>
+				{% for task in non_urgent_important_tasks %}
+				{{ task }}<br>
+				{% endfor %}
+			</td>
+			
+		</tr>
+		<tr>
+			<th>NON IMPORTANT</th>
+			
+			<td>
+				{% for task in urgent_non_important_tasks %}
+				{{ task }}<br>
+				{% endfor %}
+			</td>
+			<td>
+				{% for task in non_urgent_non_important_tasks %}
+				{{ task }}<br>
+				{% endfor %}
+			</td>
+			
+		</tr>
+
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <hr>
     <div class="container">
         
       <div class="row">
@@ -41,13 +96,11 @@
           <div class="col-xl-1"></div>
 		  <div class="col-xl-5"><h3>Non Urgent</h3>
 		  </div>
-<! -- Flask code function start writes this section of code -->		  
+	  
         <div class="col-xl-1"><center><h3>I</h3></center></div>
-        <div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">11&nbsp;</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		 
-<! -- Flask code function stops and loops around for the number of tasks in the list -->
-		  
+        <div class="col-xl-5">URGENT IMPORTANT COLUMN</div> 
+		  <div class="col-xl-1">&nbsp;</div><div class="col-xl-5">NON URGENT IMPORTANT COLUMN</div>
+		
 		   <div class="col-xl-1"><center><h3>M</h3></center></div>  
         <div class="col-xl-5">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
@@ -79,14 +132,8 @@
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
 		  <div class="col-xl-1">14&nbsp;</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
 		   
-        
-		   
 		  <div class="col-xl-12"><h2></h2></div>
-         
-		  
-         
-		  
-	   
+             
       </div>
     
 	  <div class="row">
@@ -97,13 +144,11 @@
           <div class="col-xl-1"></div>
 		  <div class="col-xl-5"><h3>&nbsp;</h3>
 		  </div>
-<! -- Flask code function start writes this section of code -->		  
+ 
         <div class="col-xl-1"><center><h3>I</h3></center></div>
-        <div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">11&nbsp;</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+        <div class="col-xl-5">URGENT NON IMPORTANT COLUMN</div> 
+		  <div class="col-xl-1">11&nbsp;</div><div class="col-xl-5">NON URGENT NON IMPORTANT</div>
 		 
-<! -- Flask code function stops and loops around for the number of tasks in the list -->
-		  
 		   <div class="col-xl-1"><center><h3>M</h3></center></div>  
         <div class="col-xl-5">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
@@ -135,15 +180,9 @@
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
 		  <div class="col-xl-1">14&nbsp;</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
 		   
-        
-		   
-		  <div class="col-xl-12"><h2></h2></div>
-         
-		  
-         
-		  
+		  <div class="col-xl-12"><h2></h2></div>  
 	   
       </div></div>
-    <hr>
+    <hr> -->
     {% endblock %}
 

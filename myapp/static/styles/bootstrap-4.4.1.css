@@ -203,6 +203,7 @@ svg {
 
 table {
   border-collapse: collapse;
+  border: 1px solid black;
 }
 
 caption {
@@ -215,6 +216,7 @@ caption {
 
 th {
   text-align: inherit;
+  border: 1px solid black;
 }
 
 label {
@@ -10198,6 +10200,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
   .table {
     border-collapse: collapse !important;
+    border: 1px solid black;
   }
   .table td,
   .table th {

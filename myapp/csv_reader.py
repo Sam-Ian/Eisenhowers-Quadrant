@@ -3,6 +3,7 @@ import csv
 task_id = {}
 task_name = {}
 task_type = {}
+full_dict_data = []
 task_id_list = []
 task_name_list = []
 task_type_list = []
@@ -13,7 +14,8 @@ with open('Eisenhower.csv') as csv_file_dict_read:
         task_id[task['Task ID']] = (task['Task ID'])
         task_name[task['Task ID']] = (task['Task'])
         task_type[task['Task ID']] = (task['Urgent/Important'])
-
+        full_dict_data.append(task)
+        
 with open('Eisenhower.csv') as csv_file_read:
     csv_reader = csv.reader(csv_file_read)
     next(csv_reader)
