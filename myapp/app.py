@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, RadioField
 from wtforms.validators import DataRequired
-from csv_read_write import task_name, task_type
+from csv_reader import task_id, task_name, task_type, task_id_list, task_name_list, task_type_list
 from flask_sqlalchemy import SQLAlchemy
 import csv
 
@@ -11,6 +11,9 @@ app.config['SECRET_KEY'] = 'entersecretkey'
 if __name__ == "__main__":
     app.debug=True
 
+app.config['ENV'] = 'development'
+app.config['DEBUG'] = True
+app.config['TESTING'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///eisenhowers_quadrant.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # db = SQLAlchemy(myapp)
@@ -42,7 +45,8 @@ def add_task():
 
 @app.route('/view-tasks')
 def view_tasks():
-    return render_template('view_tasks.html', template_task_name=task_name, template_task_type=task_type)
+    task_length = len(task_id)
+    return render_template('view_tasks.html', task_name_list=task_name_list, task_type_list=task_type_list, task_length=task_length)
 
 @app.route('/delete-task')
 def delete_task():

@@ -3,23 +3,22 @@
 
 <h1>EDIT TASK PAGE</h1>
 <h2>List of tasks</h2>
+<h3>You have {{ task_length }} tasks</h3>
 <table>
-    <!-- <tr>
+    <tr>
         <th>Task</th>
         <th>Urgency/Importance</th>
-    </tr> -->
-    <tr>
-        <td>TASK</td>
-        {% for name in template_task_name.values() %}
-        <td>{{ name }}</td>
-        {% endfor %}
     </tr>
     <tr>
-        <td>URGENCY/IMPORTANCE</td>
-        {% for t_type in template_task_type.values() %}
-        <td>{{ t_type }}</td>
+        {% for i in range(task_length) %}
+        <tr>
+            <td>{{ task_name_list[i] }}</td>
+            <td>{{ task_type_list[i] }}</td>
+        </tr>
         {% endfor %}
-    </tr>
 </table>
 
 {% endblock %}
+
+
+
