@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-
+<center>
+<br>
 <h1>VIEW YOUR TASKS</h1>
+<br>
 <h4>You have {{ task_length }} current tasks</h4>
+<br>
 <table>
     <tr>
         <th>Task</th>
@@ -21,14 +24,15 @@
 </table>
 <br>
 <h4>Delete a Task</h4>
-<p>You can delete a task here if you no longer want to do it. Please select a task from the dropdown menu to delete.</p>
 <br>
+<p>You can delete a task here if you no longer want to do it. Please select a task from the dropdown menu to delete.</p>
 <form method="POST">
 {{ delete_task_form.hidden_tag() }}
 {{ delete_task_form.task_delete_name }}
 {{ delete_task_form.submit_deleted_task() }}
 </form>
 {% endblock %}
+</center>
 
 
 

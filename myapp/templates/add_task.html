@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<h1>ADD TASK PAGE</h1>
+<center>
+<br>
+<h1>ADD TASK</h1>
+<br>
 <form method="POST">
 {{ template_form.hidden_tag() }}
 {{ template_form.task_name.label }}
@@ -12,6 +14,7 @@
 {{ template_form.task_type }}
 {{ template_form.submit_task() }}
 </form>
-
+<br>
+</center>
 
 {% endblock %}
