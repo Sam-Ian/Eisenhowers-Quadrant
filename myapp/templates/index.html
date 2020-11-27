@@ -14,7 +14,7 @@
                 <p><a class="btn btn-success btn-lg" href="{{ url_for('view_tasks') }}" role="button">View Tasks</a> </p>
               </div>
 				<div class="col-auto">
-                <p><a class="btn btn-success btn-lg" href="{{ url_for('delete_task') }}" role="button">Delete Task</a> </p>
+                <p><a class="btn btn-success btn-lg" href="{{ url_for('completed_tasks') }}" role="button">Completed Tasks</a> </p>
               </div>
 				<div class="col-auto">
                 <p><a class="btn btn-success btn-lg" href="{{ url_for('set_alarm') }}" role="button">Set Alarm</a> </p>
@@ -77,117 +77,5 @@
 	</center>
 	<br>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <hr>
-    <div class="container">
-        
-      <div class="row">
-		  <div class="col-xl-1"><h2></h2></div>
-          <div class="col-xl-5"><h3>Urgent</h3>
-          </div>
-		  
-          <div class="col-xl-1"></div>
-		  <div class="col-xl-5"><h3>Non Urgent</h3>
-		  </div>
-	  
-        <div class="col-xl-1"><center><h3>I</h3></center></div>
-        <div class="col-xl-5">URGENT IMPORTANT COLUMN</div> 
-		  <div class="col-xl-1">&nbsp;</div><div class="col-xl-5">NON URGENT IMPORTANT COLUMN</div>
-		
-		   <div class="col-xl-1"><center><h3>M</h3></center></div>  
-        <div class="col-xl-5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">12</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		   <div class="col-xl-1"><center><h3>P</h3></center></div>
-        <div class="col-xl-5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">13&nbsp;</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		   <div class="col-xl-1"><center><h3>O</h3></center></div>
-        <div class="col-xl-5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">14&nbsp;</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		   <div class="col-xl-1"><center><h3>R</h3>
-	    </center></div>
-        <div class="col-xl-5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">15&nbsp;</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		  <div class="col-xl-1"><center><h3>T</h3>
-		  </center></div>  
-        <div class="col-xl-5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">12</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		   <div class="col-xl-1"><center><h3>A</h3></center></div>
-        <div class="col-xl-5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">13&nbsp;</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		   <div class="col-xl-1"><center><h3>T</h3></center></center></div>
-        <div class="col-xl-5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">14&nbsp;</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		   
-		  <div class="col-xl-12"><h2></h2></div>
-             
-      </div>
-    
-	  <div class="row">
-		  <div class="col-xl-1"><h2></h2></div>
-          <div class="col-xl-5"><h3>&nbsp;</h3>
-          </div>
-		  
-          <div class="col-xl-1"></div>
-		  <div class="col-xl-5"><h3>&nbsp;</h3>
-		  </div>
- 
-        <div class="col-xl-1"><center><h3>I</h3></center></div>
-        <div class="col-xl-5">URGENT NON IMPORTANT COLUMN</div> 
-		  <div class="col-xl-1">11&nbsp;</div><div class="col-xl-5">NON URGENT NON IMPORTANT</div>
-		 
-		   <div class="col-xl-1"><center><h3>M</h3></center></div>  
-        <div class="col-xl-5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">12</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		   <div class="col-xl-1"><center><h3>P</h3></center></div>
-        <div class="col-xl-5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">13&nbsp;</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		   <div class="col-xl-1"><center><h3>O</h3></center></div>
-        <div class="col-xl-5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">14&nbsp;</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		   <div class="col-xl-1"><center><h3>R</h3>
-	    </center></div>
-        <div class="col-xl-5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">15&nbsp;</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		  <div class="col-xl-1"><center><h3>T</h3>
-		  </center></div>  
-        <div class="col-xl-5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">12</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		   <div class="col-xl-1"><center><h3>A</h3></center></div>
-        <div class="col-xl-5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">13&nbsp;</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		   <div class="col-xl-1"><center><h3>T</h3></center></center></div>
-        <div class="col-xl-5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div> 
-		  <div class="col-xl-1">14&nbsp;</div><div class="col-xl-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		   
-		  <div class="col-xl-12"><h2></h2></div>  
-	   
-      </div></div>
-    <hr> -->
     {% endblock %}
 
