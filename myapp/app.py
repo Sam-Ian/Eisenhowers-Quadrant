@@ -215,9 +215,3 @@ def time_limits():
     expired_task_length = len(expired_task_name_list)
 
     return render_template('time_limits.html', task_name_list=task_name_list, time_limit_list=time_limit_list, expired_task_name_list=expired_task_name_list, expired_time_limit_list=expired_time_limit_list, task_length=task_length, expired_task_length=expired_task_length, days_left=days_left, positive_expired_days=positive_expired_days)
-
-
-
-@app.route('/free-trial')
-def free_trial():
-    return render_template('free_trial.html')
