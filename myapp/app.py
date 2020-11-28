@@ -49,7 +49,7 @@ def index():
                 row['Task Complete'] = 'Y'     
 
         with open('Eisenhower.csv', 'w', newline='', encoding='utf-8') as csv_file_write:
-            csv_writer = csv.DictWriter(csv_file_write, fieldnames=('Task ID', 'Task', 'Urgent/Important', 'Task Complete', 'Date Added', 'Date Completed'))
+            csv_writer = csv.DictWriter(csv_file_write, fieldnames=('Task ID', 'Task', 'Urgent/Important', 'Task Complete', 'Date Added', 'Date Completed', 'Time Limit'))
             csv_writer.writeheader()
             csv_writer.writerows(full_dict_data)
 
