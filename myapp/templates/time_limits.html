@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<center>
+<br>
+<h1>Time Management</h1>
+<br>
+<ul style="list-style-type:none;">
+{% for i in range(task_length) %}
+<li>You have {{ days_left[i] }} days to complete this task: {{ task_name_list[i] }}. Overdue Date: {{ time_limit_list[i] }}.</li>
+{% endfor %}
+</ul>
+<br>
+<h3>Overdue Tasks</h3>
+<br>
+<ul style="list-style-type:none;">
+{% for i in range(expired_task_length) %}
+{% if positive_expired_days[i] == 0 %}
+<li>{{ expired_task_name_list[i] }}. This task expired today on the {{ expired_time_limit_list[i] }}.</li>
+{% else %}
+<li>{{ expired_task_name_list[i] }}. This task expired {{ positive_expired_days[i] }} days ago on the {{ expired_time_limit_list[i] }}.</li>
+{% endif %}
+{% endfor %}
+</ul>
+</center>
+{% endblock %}

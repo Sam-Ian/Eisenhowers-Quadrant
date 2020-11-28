@@ -1,7 +1,10 @@
 from forms import AddTask, CompleteTask, DeleteTask
 from flask import Flask, render_template, request, redirect, url_for
 import csv
-from datetime import datetime
+import time
+import datetime as dt
+from datetime import datetime, date
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'entersecretkey'
@@ -74,7 +77,7 @@ def add_task():
         new_id = len(task_name) + 1
         task_name[new_id] = add_task_form.task_name.data
         task_type[new_id] = add_task_form.task_type.data
-        time_limit[new_id] = add_task_form.time_limit.data
+        time_limit[new_id] = dt.datetime.strptime(str(add_task_form.time_limit.data), '%Y-%m-%d').strftime('%d/%m/%Y')
 
 
         with open('Eisenhower.csv', 'a', newline='', encoding='utf-8') as csv_file_write:
@@ -95,6 +98,7 @@ def view_tasks():
     task_type_list = []
     task_complete_list = []
     task_added_list = []
+    time_limit_list = []
 
     with open('Eisenhower.csv', newline='') as csv_file_read:
         csv_reader = csv.reader(csv_file_read)
@@ -107,6 +111,7 @@ def view_tasks():
                 task_type_list.append(task[2])
                 task_complete_list.append(task[3])
                 task_added_list.append(task[4])
+                time_limit_list.append(task[6])
 
     task_length = len(task_id_list)
 
@@ -131,7 +136,7 @@ def view_tasks():
             csv_writer.writeheader()
             csv_writer.writerows(full_dict_data)
         return redirect(url_for('view_tasks', _external=True, _scheme='http')) 
-    return render_template('view_tasks.html', task_name_list=task_name_list, task_type_list=task_type_list, task_complete_list=task_complete_list, task_added_list=task_added_list, task_length=task_length, delete_task_form=delete_task_form)
+    return render_template('view_tasks.html', task_name_list=task_name_list, task_type_list=task_type_list, task_complete_list=task_complete_list, task_added_list=task_added_list, time_limit_list=time_limit_list, task_length=task_length, delete_task_form=delete_task_form)
 
 
 
@@ -162,9 +167,54 @@ def completed_tasks():
 
 
 
-@app.route('/set-alarm')
-def set_alarm():
-    return render_template('set_alarm.html')
+@app.route('/time_limits')
+def time_limits():
+
+    date_now = (time.strftime("%Y-%m-%d"))
+
+    task_name_list = []
+    time_limit_list = []
+    expired_task_name_list = []
+    expired_time_limit_list = []
+
+    def time_difference_calc(limits_list):
+        difference_list = []
+        for limit in limits_list:
+            today = (date.today())
+            a = datetime.strptime(str(limit), "%d/%m/%Y")
+            b = datetime.strptime(str(today), "%Y-%m-%d")
+            difference = a - b
+            difference_list.append((difference.days))
+        return difference_list
+
+    def single_time_difference_calc(limit):
+        today = (date.today())
+        a = datetime.strptime(str(limit), "%d/%m/%Y")
+        b = datetime.strptime(str(today), "%Y-%m-%d")
+        difference = a - b
+        return difference.days
+
+    with open('Eisenhower.csv', newline='') as csv_file_read:
+        csv_reader = csv.reader(csv_file_read)
+        next(csv_reader)
+
+        for task in csv_reader:
+            if task[3] == 'N' and single_time_difference_calc(task[6]) > 0:
+                task_name_list.append(task[1])
+                time_limit_list.append(task[6])
+            elif task[3] == 'N' and single_time_difference_calc(task[6]) <= 0:
+                expired_task_name_list.append(task[1])
+                expired_time_limit_list.append(task[6])
+
+
+    days_left = time_difference_calc(time_limit_list)
+    expired_days = time_difference_calc(expired_time_limit_list)
+    positive_expired_days = [-x for x in expired_days]
+
+    task_length = len(task_name_list)
+    expired_task_length = len(expired_task_name_list)
+
+    return render_template('time_limits.html', task_name_list=task_name_list, time_limit_list=time_limit_list, expired_task_name_list=expired_task_name_list, expired_time_limit_list=expired_time_limit_list, task_length=task_length, expired_task_length=expired_task_length, days_left=days_left, positive_expired_days=positive_expired_days)
 
 
 

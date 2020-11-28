@@ -12,6 +12,7 @@
         <th>Urgency/Importance</th>
         <th>Status</th>
         <th>Date Added</th>
+        <th>Complete By</th>
     <tr>
         {% for i in range(task_length) %}
         <tr>
@@ -19,6 +20,7 @@
             <td>{{ task_type_list[i] }}</td>
             <td>Not Finished</td>
             <td>{{ task_added_list[i] }}</td>
+            <td>{{ time_limit_list[i] }}</td>
         </tr>
         {% endfor %}
 </table>
@@ -31,6 +33,7 @@
 {{ delete_task_form.task_delete_name }}
 {{ delete_task_form.submit_deleted_task() }}
 </form>
+<br>
 {% endblock %}
 </center>
 
