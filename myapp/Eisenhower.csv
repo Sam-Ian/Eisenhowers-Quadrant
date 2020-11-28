@@ -1,21 +1,22 @@
-Task ID,Task,Urgent/Important,Task Complete,Date Added,Date Completed
-1,Make a cup of tea,Non Urgent Non Important,N,11/11/2020,Null
-2,Write Eisenhower's Quadrant,Urgent Important,N,13/11/2020,Null
-3,Learn MongoDB,Urgent Non Important,N,13/11/2020,Null
-4,Learn Javascript,Non Urgent Important,N,13/11/2020,Null
-5,Learn Python Classes,Urgent Important,Y,13/11/2020,24/11/2020
-6,Fix PC memory problem,Non Urgent Important,Y,16/11/2020,24/11/2020
-7,Play Guitar,Non Urgent Non Important,N,16/11/2020,Null
-8,Listen to Music,Non Urgent Non Important,N,18/11/2020,Null
-9,Go for a walk,Non Urgent Non Important,N,19/11/2020,Null
-10,Earn Money,Urgent Important,N,20/11/2020,Null
-11,Create add task routine,Urgent Non Important,Y,21/11/2020,25/11/2020
-12,Test if a task longer than 30 characters still works,Urgent Non Important,Y,21/11/2020,25/11/2020
-13,Complete Flask Course,Urgent Important,N,21/11/2020,Null
-14,Build HTML CSS Front End,Urgent Important,N,22/11/2020,Null
-15,Install Flask,Urgent Important,Y,24/11/2020,25/11/2020
-16,Install MySQL,Urgent Important,N,25/11/2020,Null
-17,Arrange Daily Stand up call,Urgent Non Important,N,26/11/2020,Null
-18,Overall design and funtionality  of EQ,Non Urgent Important,N,26/11/2020,Null
-19,Celebrate Success,Urgent Non Important,N,27/11/2020,Null
-20,Walk the Dog,Non Urgent Important,N,27/11/2020,Null
+Task ID,Task,Urgent/Important,Task Complete,Date Added,Date Completed,Time Limit
+1,Make a cup of tea,Non Urgent Non Important,N,11/11/2020,Null,2020-11-30
+2,Write Eisenhower's Quadrant,Urgent Important,N,13/11/2020,Null,2020-11-30
+3,Learn MongoDB,Urgent Non Important,N,13/11/2020,Null,2020-11-30
+4,Learn Javascript,Non Urgent Important,N,13/11/2020,Null,2020-11-30
+5,Learn Python Classes,Urgent Important,Y,13/11/2020,24/11/2020,2020-11-13
+6,Fix PC memory problem,Non Urgent Important,Y,16/11/2020,24/11/2020,2020-11-30
+7,Play Guitar,Non Urgent Non Important,N,16/11/2020,Null,2022-04-30
+8,Listen to Music,Non Urgent Non Important,N,18/11/2020,Null,2021-02-24
+9,Go for a walk,Non Urgent Non Important,N,19/11/2020,Null,2020-12-04
+10,Earn Money,Urgent Important,N,20/11/2020,Null,2021-10-15
+11,Create add task routine,Urgent Non Important,Y,21/11/2020,25/11/2020,2020-11-20
+12,Test if a task longer than 30 characters still works,Urgent Non Important,Y,21/11/2020,25/11/2020,2020-11-13
+13,Complete Flask Course,Urgent Important,N,21/11/2020,Null,2020-12-25
+14,Build HTML CSS Front End,Urgent Important,N,22/11/2020,Null,2021-05-10
+15,Install Flask,Urgent Important,Y,24/11/2020,25/11/2020,2020-09-17
+16,Install MySQL,Urgent Important,N,25/11/2020,Null,2021-01-05
+17,Arrange Daily Stand up call,Urgent Non Important,N,26/11/2020,Null,2020-12-29
+18,Overall design and funtionality  of EQ,Non Urgent Important,N,26/11/2020,Null,2021-12-02
+19,Celebrate Success,Urgent Non Important,N,27/11/2020,Null,2020-11-28
+20,Walk the Dog,Non Urgent Important,N,27/11/2020,Null,2020-12-01
+

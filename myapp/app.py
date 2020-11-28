@@ -62,22 +62,25 @@ def add_task():
 
         task_name = {}
         task_type = {}
-    
+        time_limit = {}
+
         with open('Eisenhower.csv', newline='') as csv_file_dict_read:
             csv_dict_reader = csv.DictReader(csv_file_dict_read)
             for task in csv_dict_reader:
                 task_name[task['Task ID']] = (task['Task'])
                 task_type[task['Task ID']] = (task['Urgent/Important'])
+                time_limit[task['Task ID']] = (task['Time Limit'])
 
         new_id = len(task_name) + 1
         task_name[new_id] = add_task_form.task_name.data
         task_type[new_id] = add_task_form.task_type.data
+        time_limit[new_id] = add_task_form.time_limit.data
 
 
         with open('Eisenhower.csv', 'a', newline='', encoding='utf-8') as csv_file_write:
-            fields=['Task ID', 'Task', 'Urgent/Important', 'Task Complete', 'Date Added', 'Date Completed']
+            fields=['Task ID', 'Task', 'Urgent/Important', 'Task Complete', 'Date Added', 'Date Completed', 'Time Limit']
             csv_writer = csv.DictWriter(csv_file_write, fieldnames=fields)
-            csv_writer.writerow({'Task ID': new_id, 'Task': task_name[new_id], 'Urgent/Important': task_type[new_id], 'Task Complete': 'N', 'Date Added': datetime.today().strftime('%d/%m/%Y'), 'Date Completed': 'Null'})
+            csv_writer.writerow({'Task ID': new_id, 'Task': task_name[new_id], 'Urgent/Important': task_type[new_id], 'Task Complete': 'N', 'Date Added': datetime.today().strftime('%d/%m/%Y'), 'Date Completed': 'Null', 'Time Limit': time_limit[new_id]})
 
         return redirect(url_for('index', _external=True, _scheme='http'))
     return render_template('add_task.html', template_form=add_task_form)
