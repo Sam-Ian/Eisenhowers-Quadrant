@@ -167,10 +167,8 @@ def completed_tasks():
 
 
 
-@app.route('/time_limits')
+@app.route('/time-limits')
 def time_limits():
-
-    date_now = (time.strftime("%Y-%m-%d"))
 
     task_name_list = []
     time_limit_list = []
@@ -215,3 +213,9 @@ def time_limits():
     expired_task_length = len(expired_task_name_list)
 
     return render_template('time_limits.html', task_name_list=task_name_list, time_limit_list=time_limit_list, expired_task_name_list=expired_task_name_list, expired_time_limit_list=expired_time_limit_list, task_length=task_length, expired_task_length=expired_task_length, days_left=days_left, positive_expired_days=positive_expired_days)
+
+
+
+@app.route('/learn-more')
+def learn_more():
+    return render_template('learn_more.html')
