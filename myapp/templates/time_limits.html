@@ -12,7 +12,6 @@
 <br>
 <h3>Overdue Tasks</h3>
 <br>
-{% if expired_task_name_list|length > 0 %}
 <ul style="list-style-type:none;">
 {% for i in range(expired_task_length) %}
 {% if positive_expired_days[i] == 0 %}
@@ -22,8 +21,5 @@
 {% endif %}
 {% endfor %}
 </ul>
-{% else %}
-<p>Looks like there are no overdue tasks!</p>
-{% endif %}
 </center>
 {% endblock %}
