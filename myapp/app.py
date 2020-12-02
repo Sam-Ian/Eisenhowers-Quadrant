@@ -44,9 +44,12 @@ def index():
     
         completed_task = complete_task_form.task_completed_name.data
 
+        today = str(datetime.today().strftime("%d/%m/%Y"))
+
         for row in full_dict_data:
             if row['Task'] == completed_task:
-                row['Task Complete'] = 'Y'     
+                row['Task Complete'] = 'Y'  
+                row['Date Completed'] = today
 
         with open('Eisenhower.csv', 'w', newline='', encoding='utf-8') as csv_file_write:
             csv_writer = csv.DictWriter(csv_file_write, fieldnames=('Task ID', 'Task', 'Urgent/Important', 'Task Complete', 'Date Added', 'Date Completed', 'Time Limit'))
