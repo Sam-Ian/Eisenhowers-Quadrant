@@ -1,4 +1,4 @@
-from forms import AddTask, CompleteTask, DeleteTask
+
 from flask import Flask, render_template, request, redirect, url_for
 import csv
 import time
@@ -9,6 +9,17 @@ from datetime import datetime, date
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'entersecretkey'
 
+
+uncompleted_tasks = []
+
+def update_uncompleted_tasks():
+    with open('Eisenhower.csv', newline='') as csv_file_dict_read:
+        csv_dict_reader = csv.DictReader(csv_file_dict_read)
+        for task in csv_dict_reader:
+            if task['Task Complete'] == 'N':
+                uncompleted_tasks.append(task['Task'])
+
+update_uncompleted_tasks()
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -55,6 +66,8 @@ def index():
             csv_writer = csv.DictWriter(csv_file_write, fieldnames=('Task ID', 'Task', 'Urgent/Important', 'Task Complete', 'Date Added', 'Date Completed', 'Time Limit'))
             csv_writer.writeheader()
             csv_writer.writerows(full_dict_data)
+
+        update_uncompleted_tasks()
 
         return redirect(url_for('index', _external=True, _scheme='http'))
     return render_template('index.html', urgent_important_tasks=urgent_important_tasks, non_urgent_important_tasks=non_urgent_important_tasks, urgent_non_important_tasks=urgent_non_important_tasks, non_urgent_non_important_tasks=non_urgent_non_important_tasks, unknown_type=unknown_type, complete_task_form=complete_task_form)
@@ -222,3 +235,8 @@ def time_limits():
 @app.route('/learn-more')
 def learn_more():
     return render_template('learn_more.html')
+
+
+
+
+from forms import AddTask, CompleteTask, DeleteTask

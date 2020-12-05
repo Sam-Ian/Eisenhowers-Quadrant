@@ -1,37 +1,25 @@
 Task ID,Task,Urgent/Important,Task Complete,Date Added,Date Completed,Time Limit
-1,Make a cup of tea,Non Urgent Non Important,Y,11/11/2020,Null,30/11/2020
-2,Write Eisenhower's Quadrant,Urgent Important,Y,13/11/2020,Null,20/11/2020
-3,Learn MongoDB,Urgent Non Important,Y,13/11/2020,Null,30/11/2020
-4,Learn Javascript,Non Urgent Important,Y,13/11/2020,Null,30/11/2020
+1,Make a cup of tea,Non Urgent Non Important,N,11/11/2020,05/12/2020,30/11/2020
+2,Write Eisenhower's Quadrant,Urgent Important,N,13/11/2020,Null,20/11/2020
+3,Learn MongoDB,Urgent Non Important,N,13/11/2020,Null,30/11/2020
+4,Learn Javascript,Non Urgent Important,N,13/11/2020,Null,30/11/2020
 5,Learn Python Classes,Urgent Important,Y,13/11/2020,24/11/2020,13/11/2020
 6,Fix PC memory problem,Non Urgent Important,Y,16/11/2020,24/11/2020,30/11/2020
 7,Play Guitar,Non Urgent Non Important,Y,16/11/2020,Null,30/04/2022
-8,Listen to Music,Non Urgent Non Important,Y,18/11/2020,Null,24/02/2021
-9,Go for a walk,Non Urgent Non Important,Y,19/11/2020,Null,04/12/2020
+8,Listen to Music,Non Urgent Non Important,N,18/11/2020,Null,24/02/2021
+9,Go for a walk,Non Urgent Non Important,N,19/11/2020,Null,04/12/2020
 10,Earn Money,Urgent Important,Y,20/11/2020,Null,15/10/2021
-11,Create add task routine,Urgent Non Important,Y,21/11/2020,25/11/2020,20/11/2020
+11,Create add task routine,Urgent Non Important,N,21/11/2020,25/11/2020,20/11/2020
 12,Test if a task longer than 30 characters still works,Urgent Non Important,Y,21/11/2020,25/11/2020,13/11/2020
 13,Complete Flask Course,Urgent Important,Y,21/11/2020,Null,25/12/2020
 14,Build HTML CSS Front End,Urgent Important,Y,22/11/2020,Null,10/05/2021
 15,Install Flask,Urgent Important,Y,24/11/2020,25/11/2020,17/09/2020
 16,Install MySQL,Urgent Important,Y,25/11/2020,Null,05/01/2021
-17,Arrange Daily Stand up call,Urgent Non Important,Y,26/11/2020,Null,29/12/2020
-18,Overall design and funtionality  of EQ,Non Urgent Important,Y,26/11/2020,Null,02/12/2021
+17,Arrange Daily Stand up call,Urgent Non Important,N,26/11/2020,Null,29/12/2020
+18,Overall design and funtionality of EQ,Non Urgent Important,N,26/11/2020,Null,02/12/2021
 19,Celebrate Success,Urgent Non Important,Y,27/11/2020,Null,28/11/2020
-20,Walk the Dog,Non Urgent Important,Y,27/11/2020,Null,01/12/2020
+20,Walk the Dog,Non Urgent Important,N,27/11/2020,Null,01/12/2020
 21,Pay Sam for EQ!,Urgent Important,N,28/11/2020,Null,28/01/2024
 22,R&I Update,Urgent Important,N,28/11/2020,Null,28/11/2020
 23,Call Veritas Account Manager,Non Urgent Important,N,28/11/2020,Null,28/11/2020
 24,Raise RPQ for Oracle Unbreakable,Urgent Important,N,28/11/2020,Null,28/11/2020
-25,Buy Stamps,Non Urgent/Non Important,N,28/11/2020,Null,28/11/2020
-26,Buy Stamps,Non Urgent/Non Important,N,28/11/2020,Null,28/11/2020
-27,Buy Stamps,Urgent Non Important,N,28/11/2020,Null,28/11/2020
-28,Clean Carpet,Non Urgent/Non Important,N,28/11/2020,Null,28/11/2020
-29,Buy wife flowers,Urgent Important,N,28/11/2020,Null,28/11/2020
-30,Fire to ebay,Urgent Important,N,28/11/2020,Null,28/11/2020
-31,Boxes to trailer,Non Urgent Important,N,28/11/2020,Null,28/11/2020
-32,Book tip,Urgent Important,N,28/11/2020,Null,28/11/2020
-33,Non Urgent / Non Important,Non Urgent Non Important,N,29/11/2020,Null,29/11/2020
-34,Another Pointless Task,Non Urgent Non Important,N,29/11/2020,Null,29/11/2020
-35,And another one,Non Urgent Non Important,N,29/11/2020,Null,29/11/2020
-37,Now Fixed?,Non Urgent Non Important,Y,29/11/2020,05/12/2020,29/11/2020
